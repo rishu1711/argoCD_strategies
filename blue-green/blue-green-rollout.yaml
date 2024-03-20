@@ -5,7 +5,7 @@ metadata:
   labels:
     app: bluegreen-demo
 spec:
-  replicas: 4
+  replicas: 3
   revisionHistoryLimit: 1
   selector:
     matchLabels:
@@ -32,4 +32,4 @@ spec:
       autoPromotionEnabled: true
       activeService: bluegreen-demo
       previewService: bluegreen-demo-preview
-      # autoPromotionSeconds: 30
+      autoPromotionSeconds: 30
