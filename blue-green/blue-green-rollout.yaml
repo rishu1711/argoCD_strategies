@@ -33,8 +33,4 @@ spec:
       activeService: bluegreen-demo
       previewService: bluegreen-demo-preview
       autoPromotionSeconds: 30
-      prePromotionAnalysis: {}  # Define pre-promotion analysis here
-      postPromotionAnalysis: {}  # Define post-promotion analysis here
-      previewReplicaCount: 1  # Define number of preview replicas
-      scaleDownDelaySeconds: 60  # Define scale down delay in seconds
-      scaleDownDelayRevisionLimit: 1  # Define scale down delay revision limit
+
