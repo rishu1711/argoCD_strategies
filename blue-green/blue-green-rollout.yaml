@@ -32,3 +32,4 @@ spec:
       autoPromotionEnabled: true
       activeService: bluegreen-demo
       previewService: bluegreen-demo-preview
+      autoPromotionSeconds: 10
