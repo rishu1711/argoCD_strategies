@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: bluegreen-demo
-        image: ghcr.io/gbaeke/super:1.0.2 
+        image: ghcr.io/gbaeke/super:1.0.1
         imagePullPolicy: Always
         ports:
         - name: http
