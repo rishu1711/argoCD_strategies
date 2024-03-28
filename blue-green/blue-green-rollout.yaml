@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: bluegreen-demo
-        image: ghcr.io/gbaeke/super:1.0.2 
+        image: argoproj/rollouts-demo:blue
         imagePullPolicy: Always
         ports:
         - name: http
@@ -29,13 +29,6 @@ spec:
             cpu: 5m
   strategy:
     blueGreen:
+      autoPromotionEnabled: false
       activeService: bluegreen-demo
       previewService: bluegreen-demo-preview
-      prePromotionAnalysis:
-        templates:
-        - templateName: smoke-tests
-          args:
-          - name: service-name
-            value: bluegreen-demo-preview.default.svc.cluster.local
-      autoPromotionEnabled: true
-      autoPromotionSeconds: 30
