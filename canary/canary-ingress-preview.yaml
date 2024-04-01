@@ -8,7 +8,7 @@ metadata:
     nginx.ingress.kubernetes.io/app-root: /
 spec:
   rules:
-  - host: xyz.com
+  - host: qrs.com
     http:
       paths:
       - path: /
