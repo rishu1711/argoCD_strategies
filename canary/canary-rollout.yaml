@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: canary-demo
-        image: ghcr.io/gbaeke/super:1.0.2 
+        image: argoproj/rollouts-demo:blue 
         imagePullPolicy: Always
         ports:
         - name: http
