@@ -82,4 +82,4 @@ spec:
       - pause: {duration: 1h}
       trafficRouting:
         nginx:
-          stableIngress: canary-demo-preview
+          stableIngress: canary-demo
