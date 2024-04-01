@@ -57,7 +57,7 @@ spec:
     spec:
       containers:
       - name: canary-demo
-        image: ghcr.io/gbaeke/super:1.0.2
+        image: argoproj/rollouts-demo:blue
         imagePullPolicy: Always
         ports:
         - name: http
@@ -79,7 +79,7 @@ spec:
       - setWeight: 60
       - pause: {duration: 30s}
       - setWeight: 80
-      - pause: {duration: 10s}
+      - pause: {duration: 1h}
       trafficRouting:
         nginx:
           stableIngress: canary-demo
