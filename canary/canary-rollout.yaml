@@ -40,4 +40,4 @@ spec:
       - pause: {duration: 4h}
       trafficRouting:
         nginx:
-          stableIngress: canary-demo
+          stableIngress: canary-demo-stable
