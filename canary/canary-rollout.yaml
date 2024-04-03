@@ -28,7 +28,7 @@ spec:
   strategy:
     canary:
       canaryService: canary-demo-preview
-      stableService: canary-demo-stable
+      stableService: canary-demo
       steps:
       - setWeight: 20
       - pause: {duration: 1h}
@@ -40,4 +40,4 @@ spec:
       - pause: {duration: 4h}
       trafficRouting:
         nginx:
-          stableIngress: canary-demo-stable
+          stableIngress: canary-demo
