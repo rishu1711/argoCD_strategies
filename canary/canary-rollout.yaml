@@ -33,11 +33,11 @@ spec:
       - setWeight: 20
       - pause: {duration: 1h}
       - setWeight: 40
-      - pause: {duration: 20s}
+      - pause: {duration: 2h}
       - setWeight: 60
-      - pause: {duration: 30s}
+      - pause: {duration: 3h}
       - setWeight: 80
-      - pause: {duration: 40s}
+      - pause: {duration: 4h}
       trafficRouting:
         nginx:
           stableIngress: canary-demo
