@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: canary-demo
-        image: ghcr.io/gbaeke/super:1.0.2
+        image: argoproj/rollouts-demo:blue
         imagePullPolicy: Always
         ports:
         - name: http
@@ -30,10 +30,10 @@ spec:
       canaryService: canary-demo-preview
       steps:
       - setWeight: 20
-      - pause: {duration: 30s}
+      - pause: {duration: 10s}
       - setWeight: 40
-      - pause: {duration: 1h}
+      - pause: {duration: 20s}
       - setWeight: 60
-      - pause: {duration: 1s}
+      - pause: {duration: 30s}
       - setWeight: 80
-      - pause: {duration: 1h}
+      - pause: {duration: 40s}
