@@ -1,0 +1,21 @@
+name: Deploy to ArgoCD
+on:
+  push:
+    branches:
+      - feature-ingress
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Create or update ArgoCD application
+        run: |
+          argocd app create my-app \
+            --repo https://github.com/rishu1711/argoCD_strategies.git \
+            --path my-app \
+            --dest-server https://kubernetes.default.svc \
+            --dest-namespace default \
+            --sync-policy automated \
+            --project default \
+          || argocd app sync my-app
