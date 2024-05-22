@@ -1,0 +1,59 @@
+name: DCR - CD Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      APP_NAME:
+        description: 'ArgoCD App Name'
+        required: true
+        type: string
+      REPO_URL:
+        description: 'Repo URL for ArgoCD App'
+        required: true
+        type: string
+      PATH_TO_APP:
+        description: 'Manifest File Path'
+        required: true
+        type: string
+      NAMESPACE:
+        description: "Kubernetes Namespace"
+        required: true
+        type: string
+      KUBERNETES_API_SERVER:
+        description: "Kubernetes API Server Name"
+        required: true
+        type: string
+
+jobs:
+  argocd:
+    name: Sync Argo CD Porject
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Display Inputs
+        run: |
+          echo "┌────────────────────────────────────────────────────────────────────────────┐"
+          echo "│ Ingested Inputs                                                  │"
+          echo "└────────────────────────────────────────────────────────────────────────────┘"
+          echo "  ArgoCD App Name:              ${{ inputs.APP_NAME }}"
+          echo "  Repo URL for ArgoCD App:      ${{ inputs.REPO_URL }}"
+          echo "  Manifest File Path:           ${{ inputs.PATH_TO_APP }}" 
+          echo "  Kubernetes Namespace:         ${{ inputs.NAMESPACE }}"
+          echo "  Kubernetes API Server Name:   ${{ inputs.KUBERNETES_API_SERVER }}" 
+      
+      - name: Install Argo CD CLI
+        run: |
+          wget https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64 -O /usr/local/bin/argocd
+          chmod +x /usr/local/bin/argocd
+      
+      - name: Login to Argo CD Server
+        run: argocd login ${{ secrets.ARGOCD_SERVER_NAME }}  --username ${{ secrets.ARGOCD_USERNAME }}  --password ${{ secrets.ARGO_PASSWORD }} 
+
+      - name: Create ArgoCD Project
+        run: |
+          argocd app create ${{ inputs.APP_NAME }} --repo ${{ inputs.REPO_URL }} --path ${{ inputs.PATH_TO_APP }} --dest-namespace ${{ inputs.NAMESPACE }} --dest-server ${{ inputs.KUBERNETES_API_SERVER }}
+
+      - name: Sync Argo CD application
+        run: argocd app sync ${{ inputs.APP_NAME }}
