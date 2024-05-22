@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: test
+spec:
+  destination:
+    name: ''
+    namespace: automation
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: application-automation
+    repoURL: 'https://github.com/rishu1711/argoCD_strategies.git'
+    targetRevision: argo-automation
+  sources: []
+  project: default
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+    syncOptions:
+      - CreateNamespace=true
