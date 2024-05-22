@@ -1,4 +1,4 @@
-name: ARGOCD Workflow
+name: ArgoCD Workflow
 
 on:
   workflow_dispatch:
