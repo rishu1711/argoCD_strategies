@@ -1,4 +1,4 @@
-name: DCR - CD Workflow
+name: ARGOCD Workflow
 
 on:
   workflow_dispatch:
