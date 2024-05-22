@@ -26,7 +26,7 @@ on:
 
 jobs:
   argocd:
-    name: Sync Argo CD Porject
+    name: Create and Sync Argo CD Porject
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
